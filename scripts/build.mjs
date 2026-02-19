@@ -64,26 +64,27 @@ function pageTemplate({ title, description, pathname, body, jsonLd = [] }) {
   <meta name="twitter:description" content="${seoDesc}"/>
   ${ld}
   <style>
-    :root{--text:#e5e7eb;--muted:#94a3b8;--brand:#38bdf8;--bg:#020617;--card:#0b1220;--border:#1e293b;--cta:#0f172a;--accent:#a78bfa;--mint:#34d399}
+    :root{--bg:#070b14;--bg2:#0b1222;--surface:#0f172a;--surface2:#111c33;--text:#e6edf7;--muted:#9fb0c9;--brand:#60a5fa;--brand2:#22d3ee;--accent:#a78bfa;--ok:#34d399;--border:#23314f}
     *{box-sizing:border-box}
-    body{margin:0;background:radial-gradient(circle at top right,#111827 0%,#020617 40%,#020617 100%);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.65}
-    .wrap{max-width:1040px;margin:0 auto;padding:24px}
-    header{display:flex;justify-content:space-between;align-items:center;padding:10px 0 18px;border-bottom:1px solid var(--border)}
-    nav a{margin-left:14px;font-weight:600} a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
-    .hero{background:linear-gradient(135deg,#0b1220 0%,#172554 58%,#0f172a 100%);border:1px solid #1d4ed8;padding:20px;border-radius:16px;margin:18px 0;box-shadow:0 12px 26px rgba(2,6,23,.5)}
-    .cta{background:linear-gradient(135deg,#111827 0%,#1e1b4b 100%);border-color:#4338ca}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-    .card{border:1px solid var(--border);border-radius:14px;padding:14px;background:var(--card);box-shadow:0 8px 18px rgba(2,6,23,.35)}
+    body{margin:0;background:radial-gradient(1200px 600px at 85% -5%,#1d4ed855 0%,transparent 60%),radial-gradient(900px 500px at -10% 0%,#06b6d455 0%,transparent 50%),linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.65}
+    .wrap{max-width:1120px;margin:0 auto;padding:24px}
+    header{display:flex;justify-content:space-between;align-items:center;padding:12px 0 18px;border-bottom:1px solid var(--border);position:sticky;top:0;background:linear-gradient(180deg,#070b14f2,#070b14cc);backdrop-filter:blur(8px);z-index:10}
+    nav a{margin-left:14px;font-weight:650;font-size:.95rem} a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
+    .hero{background:linear-gradient(140deg,#0b1222 0%,#172554 45%,#0f172a 100%);border:1px solid #2a3f68;padding:24px;border-radius:18px;margin:18px 0;box-shadow:0 14px 36px rgba(2,6,23,.45)}
+    .cta{background:linear-gradient(145deg,#0f172a 0%,#1e1b4b 100%);border-color:#3b3f98}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .card{border:1px solid var(--border);border-radius:14px;padding:16px;background:linear-gradient(180deg,var(--surface),var(--surface2));box-shadow:0 8px 22px rgba(0,0,0,.25)}
     .card h3{margin-top:0}
     .muted{color:var(--muted)}
-    h1,h2,h3{line-height:1.25} h1{font-size:2rem} h2{margin-top:1.6rem}
+    h1,h2,h3{line-height:1.22} h1{font-size:2.2rem;letter-spacing:-.02em} h2{margin-top:1.5rem}
     ul,ol{padding-left:1.2rem} .article-meta{margin-top:-8px;margin-bottom:14px}
-    .breadcrumbs{font-size:.92rem;color:var(--muted);margin:10px 0}
+    .breadcrumbs{font-size:.9rem;color:var(--muted);margin:10px 0}
     .related{margin-top:24px}
-    .pill{display:inline-block;padding:4px 10px;border-radius:999px;background:#1e1b4b;color:#c4b5fd;font-size:.8rem;font-weight:700;margin-bottom:8px;border:1px solid #4338ca}
-    .btn{display:inline-block;padding:9px 14px;border-radius:10px;background:var(--brand);color:#082f49 !important;font-weight:700;margin-right:10px}
-    .btn.alt{background:var(--accent);color:#1e1b4b !important}
-    footer{border-top:1px solid var(--border);margin-top:24px;padding-top:14px;color:var(--muted);font-size:.95rem}
+    .pill{display:inline-block;padding:5px 11px;border-radius:999px;background:#1e1b4b;color:#c4b5fd;font-size:.78rem;font-weight:700;margin-bottom:8px;border:1px solid #4338ca}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#082f49 !important;font-weight:800;margin-right:10px}
+    .btn.alt{background:linear-gradient(90deg,var(--accent),#818cf8);color:#1e1b4b !important}
+    .kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .kpi{padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:#0b1327;color:#cbd5e1;font-size:.85rem}footer{border-top:1px solid var(--border);margin-top:24px;padding-top:14px;color:var(--muted);font-size:.95rem}
   </style>
 </head>
 <body>
@@ -92,9 +93,10 @@ function pageTemplate({ title, description, pathname, body, jsonLd = [] }) {
       <a href="/"><strong>${escapeHtml(site.name)}</strong></a>
       <nav>
         <a href="/posts/">Posts</a>
+        <a href="/av-buyers-checklist/">Checklist</a>
+        <a href="/weekly-brief/">Weekly Brief</a>
+        <a href="/sponsor/">Sponsor</a>
         <a href="/about/">About</a>
-        <a href="/contact/">Contact</a>
-        <a href="/editorial-policy/">Editorial Policy</a>
       </nav>
     </header>
     ${body}
@@ -175,7 +177,7 @@ for (const p of builtPosts) {
   const pathname = `/posts/${slug}/`;
   const related = builtPosts.filter(x => x.slug !== slug).slice(0, 2);
   const relatedHtml = related.length ? `<section class="related"><h2>Related</h2><div class="grid">${related.map(r => `<article class="card"><h3><a href="/posts/${r.slug}/">${escapeHtml(r.title)}</a></h3><p class="muted">${escapeHtml(formatDate(r.date))}</p></article>`).join('')}</div></section>` : '';
-  const ctaHtml = `<section class="hero cta"><h2>Get weekly Austin AV updates</h2><p>Track AV planning and deployment changes before they become costly issues.</p><p><a class="btn" href="/posts/">Read latest posts</a><a class="btn alt" href="/posts/">Open checklist</a> <a href="/posts/">Download PDF</a></p></section>`;
+  const ctaHtml = `<section class="hero cta"><h2>Get weekly Austin AV buyer brief</h2><p>Scope smarter, buy faster, and avoid costly AV deployment mistakes.</p><p><a class="btn" href="/weekly-brief/">Join Weekly Brief</a><a class="btn alt" href="/av-buyers-checklist/">Open Buyer Checklist</a> <a href="/sponsor/">Sponsor</a></p></section>`;
 
   const breadcrumbs = `<nav class="breadcrumbs"><a href="/">Home</a> › <a href="/posts/">Posts</a> › ${escapeHtml(title)}</nav>`;
   const body = `<article>${breadcrumbs}<h1>${escapeHtml(title)}</h1><p class="muted article-meta">${escapeHtml(dateText)} · ${escapeHtml(String(status))}</p>${marked.parse(content)}</article>${ctaHtml}${relatedHtml}`;
@@ -225,7 +227,7 @@ const homePath = path.join(distDir, 'index.html');
 if (fs.existsSync(homePath)) {
   const home = fs.readFileSync(homePath, 'utf8');
   const latest = listSource.slice(0, 3).map(p => `<article class="card"><h3><a href="/posts/${p.slug}/">${escapeHtml(p.title)}</a></h3><p class="muted">${escapeHtml(formatDate(p.date))}</p></article>`).join('');
-  const block = `<section class="hero"><span class="pill">Austin AV Tech Intelligence</span><h2>Business-ready. Buyer-friendly. Updated weekly.</h2><p>Practical playbooks to scope, buy, deploy, and maintain AV systems in Austin.</p><p><a class="btn" href="/posts/">Read Latest Posts</a><a class="btn alt" href="/posts/">Open Checklist</a> <a href="/posts/">Download PDF</a></p><div class="grid"><div class="card"><h3><a href="/posts/">Latest Posts</a></h3><p>Source-backed weekly updates for Austin business AV buyers.</p></div><div class="card"><h3><a href="/editorial-policy/">Editorial Policy</a></h3><p>How claims are verified and corrected.</p></div><div class="card"><h3>Deployment First</h3><p>Designed for practical procurement and deployment decisions.</p></div></div></section><section><h2>Recent Articles</h2><div class="grid">${latest}</div></section>`;
+  const block = `<section class="hero"><span class="pill">Austin AV Tech 2026</span><h2>Modern commercial AV guidance for Austin buyers.</h2><p>Source-backed buying playbooks, deployment checklists, and vendor selection frameworks.</p><div class="kpis"><span class="kpi">Local-intent SEO</span><span class="kpi">Buyer checklists</span><span class="kpi">Weekly brief</span></div><p><a class="btn" href="/weekly-brief/">Join Weekly Brief</a><a class="btn alt" href="/av-buyers-checklist/">Open Buyer Checklist</a> <a href="/posts/">Explore Articles</a></p><div class="grid"><div class="card"><h3><a href="/posts/">Latest Posts</a></h3><p>Actionable AV buying and deployment content updated weekly.</p></div><div class="card"><h3><a href="/editorial-policy/">Editorial Policy</a></h3><p>How sources and recommendations are validated.</p></div><div class="card"><h3><a href="/sponsor/">Sponsor</a></h3><p>Reach Austin commercial AV decision makers.</p></div></div></section><section><h2>Recent Articles</h2><div class="grid">${latest}</div></section>`;
   fs.writeFileSync(homePath, home.replace('</header>', '</header>' + block));
 }
 
@@ -233,6 +235,6 @@ const sitemapUrls = ['/', '/posts/', '/editorial-policy/', ...builtPosts.map(p =
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(u => `  <url><loc>${absoluteUrl(u)}</loc></url>`).join('\n')}\n</urlset>\n`;
 writeFile('sitemap.xml', sitemap);
 writeFile('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${absoluteUrl('/sitemap.xml')}\n`);
-writeFile('site.webmanifest', JSON.stringify({ name: site.name, short_name: 'ASTRI', start_url: '/', display: 'standalone', background_color: '#ffffff', theme_color: '#0b57d0' }, null, 2));
+writeFile('site.webmanifest', JSON.stringify({ name: site.name, short_name: 'AAVT', start_url: '/', display: 'standalone', background_color: '#ffffff', theme_color: '#0b57d0' }, null, 2));
 
 console.log(`Built ${builtPosts.length} posts.`);
