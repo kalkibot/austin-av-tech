@@ -69,11 +69,16 @@ function pageTemplate({ title, description, pathname, body, jsonLd = [] }) {
     body{margin:0;background:radial-gradient(1200px 600px at 85% -5%,#1d4ed855 0%,transparent 60%),radial-gradient(900px 500px at -10% 0%,#06b6d455 0%,transparent 50%),linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.65}
     .wrap{max-width:1120px;margin:0 auto;padding:24px}
     header{display:flex;justify-content:space-between;align-items:center;padding:12px 0 18px;border-bottom:1px solid var(--border);position:sticky;top:0;background:linear-gradient(180deg,#070b14f2,#070b14cc);backdrop-filter:blur(8px);z-index:10}
-    nav a{margin-left:14px;font-weight:650;font-size:.95rem} a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
-    .hero{background:linear-gradient(140deg,#0b1222 0%,#172554 45%,#0f172a 100%);border:1px solid #2a3f68;padding:24px;border-radius:18px;margin:18px 0;box-shadow:0 14px 36px rgba(2,6,23,.45)}
+    nav a{margin-left:14px;font-weight:650;font-size:.95rem;position:relative;transition:color .25s ease}
+    nav a::after{content:"";position:absolute;left:0;bottom:-3px;width:0;height:2px;background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width .25s ease}
+    nav a:hover::after{width:100%}
+    a{color:var(--brand);text-decoration:none} a:hover{text-decoration:none}
+    .hero{background:linear-gradient(140deg,#0b1222 0%,#172554 45%,#0f172a 100%);border:1px solid #2a3f68;padding:24px;border-radius:18px;margin:18px 0;box-shadow:0 14px 36px rgba(2,6,23,.45);transition:transform .35s ease, box-shadow .35s ease}
+    .hero:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(2,6,23,.5)}
     .cta{background:linear-gradient(145deg,#0f172a 0%,#1e1b4b 100%);border-color:#3b3f98}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card{border:1px solid var(--border);border-radius:14px;padding:16px;background:linear-gradient(180deg,var(--surface),var(--surface2));box-shadow:0 8px 22px rgba(0,0,0,.25)}
+    .card{border:1px solid var(--border);border-radius:14px;padding:16px;background:linear-gradient(180deg,var(--surface),var(--surface2));box-shadow:0 8px 22px rgba(0,0,0,.25);transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease}
+    .card:hover{transform:translateY(-4px);border-color:#334b74;box-shadow:0 14px 30px rgba(0,0,0,.35)}
     .card h3{margin-top:0}
     .muted{color:var(--muted)}
     h1,h2,h3{line-height:1.22} h1{font-size:2.2rem;letter-spacing:-.02em} h2{margin-top:1.5rem}
@@ -81,10 +86,16 @@ function pageTemplate({ title, description, pathname, body, jsonLd = [] }) {
     .breadcrumbs{font-size:.9rem;color:var(--muted);margin:10px 0}
     .related{margin-top:24px}
     .pill{display:inline-block;padding:5px 11px;border-radius:999px;background:#1e1b4b;color:#c4b5fd;font-size:.78rem;font-weight:700;margin-bottom:8px;border:1px solid #4338ca}
-    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#082f49 !important;font-weight:800;margin-right:10px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#082f49 !important;font-weight:800;margin-right:10px;transition:transform .2s ease, filter .2s ease}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
     .btn.alt{background:linear-gradient(90deg,var(--accent),#818cf8);color:#1e1b4b !important}
     .kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .kpi{padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:#0b1327;color:#cbd5e1;font-size:.85rem}footer{border-top:1px solid var(--border);margin-top:24px;padding-top:14px;color:var(--muted);font-size:.95rem}
+    .kpi{padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:#0b1327;color:#cbd5e1;font-size:.85rem}
+    .fade{animation:fadeUp .55s ease both}
+    .fade:nth-child(2){animation-delay:.06s}.fade:nth-child(3){animation-delay:.12s}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+    footer{border-top:1px solid var(--border);margin-top:24px;padding-top:14px;color:var(--muted);font-size:.95rem}
   </style>
 </head>
 <body>
@@ -176,7 +187,7 @@ for (const p of builtPosts) {
   const dateText = formatDate(date);
   const pathname = `/posts/${slug}/`;
   const related = builtPosts.filter(x => x.slug !== slug).slice(0, 2);
-  const relatedHtml = related.length ? `<section class="related"><h2>Related</h2><div class="grid">${related.map(r => `<article class="card"><h3><a href="/posts/${r.slug}/">${escapeHtml(r.title)}</a></h3><p class="muted">${escapeHtml(formatDate(r.date))}</p></article>`).join('')}</div></section>` : '';
+  const relatedHtml = related.length ? `<section class="related"><h2>Related</h2><div class="grid">${related.map(r => `<article class="card fade"><h3><a href="/posts/${r.slug}/">${escapeHtml(r.title)}</a></h3><p class="muted">${escapeHtml(formatDate(r.date))}</p></article>`).join('')}</div></section>` : '';
   const ctaHtml = `<section class="hero cta"><h2>Get weekly Austin AV buyer brief</h2><p>Scope smarter, buy faster, and avoid costly AV deployment mistakes.</p><p><a class="btn" href="/weekly-brief/">Join Weekly Brief</a><a class="btn alt" href="/av-buyers-checklist/">Open Buyer Checklist</a> <a href="/sponsor/">Sponsor</a></p></section>`;
 
   const breadcrumbs = `<nav class="breadcrumbs"><a href="/">Home</a> › <a href="/posts/">Posts</a> › ${escapeHtml(title)}</nav>`;
@@ -214,7 +225,7 @@ for (const p of builtPosts) {
 
 const published = builtPosts.filter(p => p.status !== 'draft');
 const listSource = published.length ? published : builtPosts;
-const cards = listSource.map(p => `<article class="card"><h3><a href="/posts/${p.slug}/">${escapeHtml(p.title)}</a></h3><p class="muted">${escapeHtml(formatDate(p.date))} · ${escapeHtml(String(p.status))}</p><p>${escapeHtml((p.metaDescription || '').slice(0, 150))}</p></article>`).join('');
+const cards = listSource.map(p => `<article class="card fade"><h3><a href="/posts/${p.slug}/">${escapeHtml(p.title)}</a></h3><p class="muted">${escapeHtml(formatDate(p.date))} · ${escapeHtml(String(p.status))}</p><p>${escapeHtml((p.metaDescription || '').slice(0, 150))}</p></article>`).join('');
 writeFile('posts/index.html', pageTemplate({
   title: 'Posts',
   description: 'Austin AV Tech article archive and updates.',
@@ -226,7 +237,7 @@ writeFile('posts/index.html', pageTemplate({
 const homePath = path.join(distDir, 'index.html');
 if (fs.existsSync(homePath)) {
   const home = fs.readFileSync(homePath, 'utf8');
-  const latest = listSource.slice(0, 3).map(p => `<article class="card"><h3><a href="/posts/${p.slug}/">${escapeHtml(p.title)}</a></h3><p class="muted">${escapeHtml(formatDate(p.date))}</p></article>`).join('');
+  const latest = listSource.slice(0, 3).map(p => `<article class="card fade"><h3><a href="/posts/${p.slug}/">${escapeHtml(p.title)}</a></h3><p class="muted">${escapeHtml(formatDate(p.date))}</p></article>`).join('');
   const block = `<section class="hero"><span class="pill">Austin AV Tech 2026</span><h2>Modern commercial AV guidance for Austin buyers.</h2><p>Source-backed buying playbooks, deployment checklists, and vendor selection frameworks.</p><div class="kpis"><span class="kpi">Local-intent SEO</span><span class="kpi">Buyer checklists</span><span class="kpi">Weekly brief</span></div><p><a class="btn" href="/weekly-brief/">Join Weekly Brief</a><a class="btn alt" href="/av-buyers-checklist/">Open Buyer Checklist</a> <a href="/posts/">Explore Articles</a></p><div class="grid"><div class="card"><h3><a href="/posts/">Latest Posts</a></h3><p>Actionable AV buying and deployment content updated weekly.</p></div><div class="card"><h3><a href="/editorial-policy/">Editorial Policy</a></h3><p>How sources and recommendations are validated.</p></div><div class="card"><h3><a href="/sponsor/">Sponsor</a></h3><p>Reach Austin commercial AV decision makers.</p></div></div></section><section><h2>Recent Articles</h2><div class="grid">${latest}</div></section>`;
   fs.writeFileSync(homePath, home.replace('</header>', '</header>' + block));
 }
