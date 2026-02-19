@@ -98,7 +98,7 @@ function pageTemplate({ title, description, pathname, body, jsonLd = [] }) {
       </nav>
     </header>
     ${body}
-    <footer>Source-backed Austin STR content. Public references only.</footer>
+    <footer>Source-backed Austin AV content. Public references only.</footer>
   </div>
 </body>
 </html>`;
@@ -175,7 +175,7 @@ for (const p of builtPosts) {
   const pathname = `/posts/${slug}/`;
   const related = builtPosts.filter(x => x.slug !== slug).slice(0, 2);
   const relatedHtml = related.length ? `<section class="related"><h2>Related</h2><div class="grid">${related.map(r => `<article class="card"><h3><a href="/posts/${r.slug}/">${escapeHtml(r.title)}</a></h3><p class="muted">${escapeHtml(formatDate(r.date))}</p></article>`).join('')}</div></section>` : '';
-  const ctaHtml = `<section class="hero cta"><h2>Get weekly Austin STR updates</h2><p>Track AV planning changes before they become listing risks.</p><p><a class="btn" href="/posts/">Read latest posts</a><a class="btn alt" href="/posts/">Open checklist</a> <a href="/posts/">Download PDF</a></p></section>`;
+  const ctaHtml = `<section class="hero cta"><h2>Get weekly Austin AV updates</h2><p>Track AV planning and deployment changes before they become costly issues.</p><p><a class="btn" href="/posts/">Read latest posts</a><a class="btn alt" href="/posts/">Open checklist</a> <a href="/posts/">Download PDF</a></p></section>`;
 
   const breadcrumbs = `<nav class="breadcrumbs"><a href="/">Home</a> › <a href="/posts/">Posts</a> › ${escapeHtml(title)}</nav>`;
   const body = `<article>${breadcrumbs}<h1>${escapeHtml(title)}</h1><p class="muted article-meta">${escapeHtml(dateText)} · ${escapeHtml(String(status))}</p>${marked.parse(content)}</article>${ctaHtml}${relatedHtml}`;
@@ -217,7 +217,7 @@ writeFile('posts/index.html', pageTemplate({
   title: 'Posts',
   description: 'Austin AV Tech article archive and updates.',
   pathname: '/posts/',
-  body: `<h1>Posts</h1><p class="muted">Austin STR AV planning + operations updates.</p><section class="grid">${cards}</section>`,
+  body: `<h1>Posts</h1><p class="muted">Austin AV planning + operations updates.</p><section class="grid">${cards}</section>`,
   jsonLd: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Posts', url: absoluteUrl('/posts/') }]
 }));
 
@@ -225,7 +225,7 @@ const homePath = path.join(distDir, 'index.html');
 if (fs.existsSync(homePath)) {
   const home = fs.readFileSync(homePath, 'utf8');
   const latest = listSource.slice(0, 3).map(p => `<article class="card"><h3><a href="/posts/${p.slug}/">${escapeHtml(p.title)}</a></h3><p class="muted">${escapeHtml(formatDate(p.date))}</p></article>`).join('');
-  const block = `<section class="hero"><span class="pill">Austin AV Techligence</span><h2>Compliance-first. Operator-friendly. Updated weekly.</h2><p>Practical playbooks to keep listings active and reduce enforcement risk.</p><p><a class="btn" href="/posts/">Read Latest Posts</a><a class="btn alt" href="/posts/">Open Checklist</a> <a href="/posts/">Download PDF</a></p><div class="grid"><div class="card"><h3><a href="/posts/">Latest Posts</a></h3><p>Source-backed weekly updates for Austin STR operators.</p></div><div class="card"><h3><a href="/editorial-policy/">Editorial Policy</a></h3><p>How claims are verified and corrected.</p></div><div class="card"><h3>Compliance First</h3><p>Designed for practical readiness, not generic blog fluff.</p></div></div></section><section><h2>Recent Articles</h2><div class="grid">${latest}</div></section>`;
+  const block = `<section class="hero"><span class="pill">Austin AV Tech Intelligence</span><h2>Business-ready. Buyer-friendly. Updated weekly.</h2><p>Practical playbooks to scope, buy, deploy, and maintain AV systems in Austin.</p><p><a class="btn" href="/posts/">Read Latest Posts</a><a class="btn alt" href="/posts/">Open Checklist</a> <a href="/posts/">Download PDF</a></p><div class="grid"><div class="card"><h3><a href="/posts/">Latest Posts</a></h3><p>Source-backed weekly updates for Austin business AV buyers.</p></div><div class="card"><h3><a href="/editorial-policy/">Editorial Policy</a></h3><p>How claims are verified and corrected.</p></div><div class="card"><h3>Deployment First</h3><p>Designed for practical procurement and deployment decisions.</p></div></div></section><section><h2>Recent Articles</h2><div class="grid">${latest}</div></section>`;
   fs.writeFileSync(homePath, home.replace('</header>', '</header>' + block));
 }
 
