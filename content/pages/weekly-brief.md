@@ -11,4 +11,4 @@ Get one concise update weekly:
 - cost/risk watchpoints
 - buyer checklists
 
-Reply in channel with **"AV brief"** to subscribe (interim flow).
+Use the signup form/button on this page to join the weekly brief.

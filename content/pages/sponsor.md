@@ -12,4 +12,4 @@ Reach Austin businesses actively evaluating AV systems.
 - Contextual sponsored block on buyer-intent pages
 - Transparent disclosure-first policy
 
-Reply in channel with **"AV sponsor"** for rates.
+Use the contact method on this page to request sponsor rates and availability.
