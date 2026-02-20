@@ -1,23 +1,36 @@
 ---
-title: Austin Conference Room AV Checklist for SMB Teams
-slug: austin-conference-room-av-checklist
+title: Austin TV Mounting Checklist for Homeowners
+slug: austin-tv-mounting-checklist-homeowners
 date: 2026-02-19
 status: publish-ready
-meta_description: Practical checklist for Austin SMB teams planning conference room AV systems with fewer deployment mistakes.
+meta_description: Homeowner checklist for safe TV mounting in Austin, including mount selection, wall checks, cable management, and viewing height.
 ---
 
 ## Quick answer
-Start with room use-cases, user count, audio intelligibility, display size, control simplicity, and support ownership.
+Before mounting any TV, verify wall structure, choose the right bracket type, set viewing height, and plan cable concealment.
 
-## Checklist
-- Define room scenarios (daily standup, client demos, hybrid meetings)
-- Set audio baseline (mic coverage + echo handling)
-- Select display and camera based on room dimensions
-- Define one-touch controls for non-technical users
-- Assign support owner and maintenance cadence
+## Step-by-step checklist
+- Confirm TV size, VESA pattern, and mount compatibility
+- Locate studs and avoid unsafe anchor-only installs for heavy TVs
+- Set center height based on primary seating eye level
+- Plan HDMI/power routing before drilling
+- Level, tighten, and test movement (if full-motion)
 
-## Related guides
-- /posts/
+## Common mistakes
+- Mounting too high above fireplace without tilt compensation
+- Ignoring glare/reflection from windows
+- Leaving cable slack unmanaged behind mount arms
+
+## FAQ
+### Is full-motion always better?
+No. Use it when side-angle viewing or frequent repositioning is needed.
+
+### Can I conceal wires in all walls?
+Not always; wall type and code-safe routing determine options.
+
+## Related
+- [TV Mounting in Austin](/tv-mounting-austin/)
+- [Austin AV Buyer Checklist](/av-buyers-checklist/)
 
 ## Sources
-- AVIXA (industry resource): https://www.avixa.org/
+- CEDIA homeowner guidance: https://cedia.org/homeowners/

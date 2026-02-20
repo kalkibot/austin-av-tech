@@ -1,18 +1,18 @@
 ---
 title: Austin AV Tech
 slug: /
-meta_description: Austin AV installation and support insights for conference rooms, retail, education, and SMB setups.
+meta_description: "Residential AV installation in Austin: TV mounting, projector setup, home theater, multimedia wiring, and security camera installation."
 ---
 
-Austin AV Tech helps Austin businesses plan and maintain modern audio-visual systems.
+Austin AV Tech helps Austin homeowners install and optimize home entertainment and security systems.
 
-## Core service intents
-- Conference room AV installation
-- Commercial audio/video upgrades
-- Surveillance + smart office integration
-- AV troubleshooting and maintenance
+## Residential services
+- TV wall mounting and wire concealment
+- Home projector and screen installation
+- Home theater and surround sound setup
+- Security camera installation (Wi-Fi and PoE)
 
 ## Start here
-- Buyer guides
-- Cost and scope checklists
-- Vendor selection criteria
+- [Austin AV Buyer Checklist](/av-buyers-checklist/)
+- [Book Installation](/book-installation/)
+- [Posts](/posts/)

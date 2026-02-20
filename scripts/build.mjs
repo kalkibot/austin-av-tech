@@ -104,10 +104,10 @@ function pageTemplate({ title, description, pathname, body, jsonLd = [] }) {
       <a href="/"><strong>${escapeHtml(site.name)}</strong></a>
       <nav>
         <a href="/posts/">Posts</a>
+        <a href="/tv-mounting-austin/">TV Mounting</a>
+        <a href="/security-camera-installation-austin/">Cameras</a>
         <a href="/av-buyers-checklist/">Checklist</a>
-        <a href="/weekly-brief/">Weekly Brief</a>
-        <a href="/sponsor/">Sponsor</a>
-        <a href="/about/">About</a>
+        <a href="/book-installation/">Book</a>
       </nav>
     </header>
     ${body}
@@ -188,7 +188,7 @@ for (const p of builtPosts) {
   const pathname = `/posts/${slug}/`;
   const related = builtPosts.filter(x => x.slug !== slug).slice(0, 2);
   const relatedHtml = related.length ? `<section class="related"><h2>Related</h2><div class="grid">${related.map(r => `<article class="card fade"><h3><a href="/posts/${r.slug}/">${escapeHtml(r.title)}</a></h3><p class="muted">${escapeHtml(formatDate(r.date))}</p></article>`).join('')}</div></section>` : '';
-  const ctaHtml = `<section class="hero cta"><h2>Get weekly Austin AV buyer brief</h2><p>Scope smarter, buy faster, and avoid costly AV deployment mistakes.</p><p><a class="btn" href="/weekly-brief/">Join Weekly Brief</a><a class="btn alt" href="/av-buyers-checklist/">Open Buyer Checklist</a> <a href="/sponsor/">Sponsor</a></p></section>`;
+  const ctaHtml = `<section class="hero cta"><h2>Get weekly Austin AV buyer brief</h2><p>Scope smarter, buy faster, and avoid costly AV deployment mistakes.</p><p><a class="btn" href="/book-installation/">Book Installation</a><a class="btn alt" href="/av-buyers-checklist/">Open Buyer Checklist</a> <a href="/sponsor/">Sponsor</a></p></section>`;
 
   const breadcrumbs = `<nav class="breadcrumbs"><a href="/">Home</a> › <a href="/posts/">Posts</a> › ${escapeHtml(title)}</nav>`;
   const body = `<article>${breadcrumbs}<h1>${escapeHtml(title)}</h1><p class="muted article-meta">${escapeHtml(dateText)} · ${escapeHtml(String(status))}</p>${marked.parse(content)}</article>${ctaHtml}${relatedHtml}`;
@@ -238,7 +238,7 @@ const homePath = path.join(distDir, 'index.html');
 if (fs.existsSync(homePath)) {
   const home = fs.readFileSync(homePath, 'utf8');
   const latest = listSource.slice(0, 3).map(p => `<article class="card fade"><h3><a href="/posts/${p.slug}/">${escapeHtml(p.title)}</a></h3><p class="muted">${escapeHtml(formatDate(p.date))}</p></article>`).join('');
-  const block = `<section class="hero"><span class="pill">Austin AV Tech 2026</span><h2>Modern commercial AV guidance for Austin buyers.</h2><p>Source-backed buying playbooks, deployment checklists, and vendor selection frameworks.</p><div class="kpis"><span class="kpi">Local-intent SEO</span><span class="kpi">Buyer checklists</span><span class="kpi">Weekly brief</span></div><p><a class="btn" href="/weekly-brief/">Join Weekly Brief</a><a class="btn alt" href="/av-buyers-checklist/">Open Buyer Checklist</a> <a href="/posts/">Explore Articles</a></p><div class="grid"><div class="card"><h3><a href="/posts/">Latest Posts</a></h3><p>Actionable AV buying and deployment content updated weekly.</p></div><div class="card"><h3><a href="/editorial-policy/">Editorial Policy</a></h3><p>How sources and recommendations are validated.</p></div><div class="card"><h3><a href="/sponsor/">Sponsor</a></h3><p>Reach Austin commercial AV decision makers.</p></div></div></section><section><h2>Recent Articles</h2><div class="grid">${latest}</div></section>`;
+  const block = `<section class="hero"><span class="pill">Austin AV Tech 2026</span><h2>Residential AV installation guidance for Austin homeowners.</h2><p>Source-backed buying playbooks, deployment checklists, and vendor selection frameworks.</p><div class="kpis"><span class="kpi">Local-intent SEO</span><span class="kpi">Buyer checklists</span><span class="kpi">Weekly brief</span></div><p><a class="btn" href="/weekly-brief/">Book Installation</a><a class="btn alt" href="/av-buyers-checklist/">Open Buyer Checklist</a> <a href="/posts/">Explore Articles</a></p><div class="grid"><div class="card"><h3><a href="/posts/">Latest Posts</a></h3><p>Actionable AV buying and deployment content updated weekly.</p></div><div class="card"><h3><a href="/editorial-policy/">Editorial Policy</a></h3><p>How sources and recommendations are validated.</p></div><div class="card"><h3><a href="/sponsor/">Sponsor</a></h3><p>Get practical setup guidance for Austin homes.</p></div></div></section><section><h2>Recent Articles</h2><div class="grid">${latest}</div></section>`;
   fs.writeFileSync(homePath, home.replace('</header>', '</header>' + block));
 }
 
